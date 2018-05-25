@@ -54,7 +54,7 @@
 (defun setup-js-buffer ()
   (when (and (derived-mode-p 'js-mode) (not (derived-mode-p 'json-mode)))
     (company-mode 1)
-    (tern-mode 1)
+    ;; (tern-mode 1)
     ;; When the buffer is not visiting a file, eslint systematically fails
     (if buffer-file-name
 	(flycheck-mode 1)
@@ -63,14 +63,15 @@
     (js2-refactor-mode 1)
     (js2-imenu-extras-mode)
     (indium-interaction-mode 1)
-    (amd-mode 1)
+    ;;(amd-mode 1)
+    (lsp-javascript-typescript-enable)
     (widgetjs-mode 1))
 
   ;; add eslintd-fix support
   (eslintd-fix-mode)
 
   ;; add xref-js2 support
-  (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)
+  ;; (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)
 
   (setq-local compile-command "gulp")
 
